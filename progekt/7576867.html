@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Текстовое окно</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tenor-gif-embed" data-postid="20489683" data-share-method="host" data-aspect-ratio="0.9" data-width="20%"><a href="https://tenor.com/view/bgrv-gopher-krch-gif-20489683">Bgrv Gopher Krch GIF</a>from <a href="https://tenor.com/search/bgrv+gopher+krch-gifs">Bgrv Gopher Krch GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <textarea id="textArea" rows="4" cols="50" placeholder="Чай"></textarea>
+    <button id="showTextButton">Ломай мы же милионеры</button>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById("showTextButton").onclick = function() {
+            var text = document.getElementById("textArea").value;
+            document.getElementById("output").innerText = 'Продал почку '+text;
+        };
+        
+        
+    </script>
+</body>
+</html>

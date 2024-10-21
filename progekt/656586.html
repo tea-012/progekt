@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.input-container {
+    margin: 20px 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+#description {
+    margin-top: 20px;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Описание сайта</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+
+        document.getElementById('fetchDescriptionButton').addEventListener('click', async function() {
+            const urlInput = document.getElementById('urlInput').value;
+            const descriptionDiv = document.getElementById('description');
+            const siteDescriptionElement = document.getElementById('siteDescription');
+        
+            if (!urlInput) {
+                alert('Пожалуйста, введите URL.');
+                return;
+            }
+        
+            try {
+                const response = await fetch(<code>https://api.linkpreview.net?key=YOUR_API_KEY&amp;q=${encodeURIComponent(urlInput)}</code>);
+                const data = await response.json();
+        
+                if (data && data.description) {
+                    siteDescriptionElement.textContent = data.description;
+                    descriptionDiv.classList.remove('hidden');
+                } else {
+                    siteDescriptionElement.textContent = 'Ошибка: не удалось получить описание.';
+                    descriptionDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Ошибка при получении данных:', error);
+                siteDescriptionElement.textContent = 'Ошибка: не удалось получить описание.';
+                descriptionDiv.classList.remove('hidden');
+            }
+        });
+        
+        </script>
+    <header>
+        <h1>Введите URL для получения описания сайта</h1>
+        <p>Введите ссылку на сайт и нажмите кнопку, чтобы получить его описание.</p>
+    </header>
+
+    <main>
+        <div class="input-container">
+            <input type="text" id="urlInput" placeholder="Введите URL...">
+            <button id="fetchDescriptionButton">Получить описание</button>
+        </div>
+        <div id="description" class="hidden">
+            <h2>Описание сайта:</h2>
+            <p id="siteDescription"></p>
+        </div>
+    </main>
+    <div class="tenor-gif-embed" data-postid="26877257" data-share-method="host" data-aspect-ratio="1.65285" data-width="60%"><a href="https://tenor.com/view/%D1%87%D0%B0%D0%B9-%D0%BE%D1%84%D1%84-%D0%B5%D0%B1%D0%B0%D0%BB%D0%BE-%D1%81%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8-%D0%B1%D0%B5%D1%81%D0%B5%D0%B4%D0%B0-gif-26877257">чай офф GIF</a>from <a href="https://tenor.com/search/%D1%87%D0%B0%D0%B9-gifs">чай GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
